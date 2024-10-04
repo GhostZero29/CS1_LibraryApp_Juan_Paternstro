@@ -66,7 +66,42 @@ public abstract class Person {
     }
     public abstract boolean canLend();
  
+public class Student extends Person{
+    private static final int MAX_LOANS = 5;
     
+    public Student(String id_Card, String Names, String lastNames){
+        super(id_Card, names, lastNames,"Student");
+    }
+    
+    
+    @Override
+    public boolean canLend(){
+        return getCurrentLoan() < MAX_LOANS;
+    }    
+}
+public class teacher extends Person{
+    private static final int MAX_LOANS = 3;
+    
+    public  teacher(String id_Card, String names, String lastNames){
+        super(id_Card, names, lastNames, "teacher");
+    }
+    
+    @Override
+    public boolean canLend(){
+        return getCurrentLoan() < MAX_LOANS;
+    }
+}
+public class admin extends Person{
+    private static final int MAX_LOANS = 2;
+    public admin(String id_Card, String names, String lastNames){
+        super(id_Card, names, lastNames, "admin");
+    }
+    @Override
+    public boolean canLend(){
+        return getCurrentLoan() < MAX_LOANS;
+    }
+} 
+
     public void register(String id_Card, String names, String lastNames, String rol){
     this.id_Card = id_Card;
     this.names = names;
